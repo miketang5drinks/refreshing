@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>探索．品嚐．再來一次 | Keen 風格示例站</title>
+  <meta name="description" content="以輕焙、明亮風味為靈感的精品咖啡示例網站，含風味輪互動與咖啡包視覺。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 通頂導覽 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#">Keen-style</a>
+      <nav class="menu">
+        <a href="#flavor">風味探索</a>
+        <a href="#products">咖啡精選</a>
+        <a href="#subscription">訂閱方案</a>
+        <a href="#bar">品飲空間</a>
+      </nav>
+      <a class="cta" href="#subscription">加入訂閱</a>
+    </div>
+  </header>
+
+  <!-- Hero 區 -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>探索．品嚐．再來一次</h1>
+        <p>獨特產區、真實故事、清亮風味。輕焙現烘，保留原生層次，讓每一杯都能說出它的出身。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#flavor">點選風味輪，找到你的咖啡</a>
+          <a class="btn" href="#products">查看精選</a>
+        </div>
+        <div class="hero-ticker">
+          <span>直接貿易．單一產區</span>
+          <span>輕焙．明亮風味</span>
+          <span>每週一至四出貨</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/bags/bag-01.svg" alt="咖啡包示意 01" />
+      </div>
+    </div>
+  </section>
+
+ <!-- 風味輪互動（僅替換這段） -->
+<section id="flavor" class="flavor">
+  <div class="container">
+    <h2>風味探索</h2>
+    <p>咖啡的風味比葡萄酒更為多樣。我們設計了易於上手的風味輪，幫你快速鎖定喜好：果香、花香、堅果、可可、香料等。</p>
+
+    <div class="flavor-wheel-wrap">
+      <!-- 補上唯一 Canvas -->
+      <canvas id="flavorWheel" width="480" height="480" aria-label="咖啡風味輪"></canvas>
+
+      <!-- 圖例保持原樣 -->
+      <div class="flavor-legend">
+        <div class="legend-item"><span class="chip chip-fruit"></span>果香</div>
+        <div class="legend-item"><span class="chip chip-floral"></span>花香</div>
+        <div class="legend-item"><span class="chip chip-nutty"></span>堅果</div>
+        <div class="legend-item"><span class="chip chip-cocoa"></span>可可</div>
+        <div class="legend-item"><span class="chip chip-spice"></span>香料</div>
+        <div class="legend-item"><span class="chip chip-citrus"></span>柑橘</div>
+      </div>
+    </div>
+
+    <div class="flavor-result" id="flavorResult">
+      <h3>你的即時篩選</h3>
+      <p>點擊風味輪任一區塊，即可篩選出最符合該風味的咖啡。</p>
+    </div>
+  </div>
+</section>
+
+  <!-- 商品精選 -->
+  <section id="products" class="products">
+    <div class="container">
+      <h2>本月熱門精選</h2>
+      <div class="grid">
+        <!-- 商品卡 01 -->
+        <article class="card" data-flavors="fruit,citrus,floral">
+          <img src="assets/bags/bag-02.svg" alt="咖啡包示意 02" />
+          <div class="card-body">
+            <h3>哥斯大黎加・晴林</h3>
+            <p>輕焙、明亮酸質、花果香奔放，餘韻細緻清爽。</p>
+            <div class="price">€ 13.20 – € 48.00</div>
+            <div class="tags"><span>果香</span><span>花香</span><span>柑橘</span></div>
+            <div class="actions">
+              <button class="btn small">加入購物車</button>
+              <button class="btn small ghost">了解更多</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 商品卡 02 -->
+        <article class="card" data-flavors="cocoa,nutty,spice">
+          <img src="assets/bags/bag-03.svg" alt="咖啡包示意 03" />
+          <div class="card-body">
+            <h3>衣索比亞・晨嵐</h3>
+            <p>柔滑口感，花香與茶感並陳，層次優雅。</p>
+            <div class="price">€ 12.80 – € 44.00</div>
+            <div class="tags"><span>花香</span><span>茶感</span><span>可可</span></div>
+            <div class="actions">
+              <button class="btn small">加入購物車</button>
+              <button class="btn small ghost">了解更多</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 商品卡 03 -->
+        <article class="card" data-flavors="cocoa,nutty">
+          <img src="assets/bags/bag-04.svg" alt="咖啡包示意 04" />
+          <div class="card-body">
+            <h3>瓜地馬拉・松谷</h3>
+            <p>堅果與可可調性為主，口感飽滿，適合作為每日飲用。</p>
+            <div class="price">€ 13.70 – € 46.90</div>
+            <div class="tags"><span>堅果</span><span>可可</span></div>
+            <div class="actions">
+              <button class="btn small">加入購物車</button>
+              <button class="btn small ghost">了解更多</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 商品卡 04 -->
+        <article class="card" data-flavors="fruit,floral,citrus">
+          <img src="assets/bags/bag-01.svg" alt="咖啡包示意 01" />
+          <div class="card-body">
+            <h3>肯亞・晨光</h3>
+            <p>黑加侖果感與柑橘酸質交織，收尾乾淨利落。</p>
+            <div class="price">€ 14.20 – € 52.00</div>
+            <div class="tags"><span>果香</span><span>柑橘</span></div>
+            <div class="actions">
+              <button class="btn small">加入購物車</button>
+              <button class="btn small ghost">了解更多</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="more">
+        <a class="btn" href="#">查看全部咖啡</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 訂閱導流 -->
+  <section id="subscription" class="subscription">
+    <div class="container sub-inner">
+      <h2>每月探索新風味</h2>
+      <p>訂閱方案每月寄送新鮮烘焙精品豆，隨附風味筆記與沖煮建議。輕鬆展開你的風味旅程。</p>
+      <form class="sub-form" action="#" method="post">
+        <input type="email" placeholder="輸入你的 Email" aria-label="Email" required />
+        <button class="btn primary" type="submit">訂閱並享優惠</button>
+      </form>
+      <ul class="sub-highlights">
+        <li><strong>直接貿易：</strong>重視透明與公平。</li>
+        <li><strong>單一產區：</strong>保留獨特個性。</li>
+        <li><strong>輕焙新鮮：</strong>明亮層次更清晰。</li>
+        <li><strong>每週出貨：</strong>一到四固定寄送。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 品飲空間介紹 -->
+  <section id="bar" class="bar">
+    <div class="container bar-inner">
+      <div class="bar-copy">
+        <h2>在城市中心的品飲空間</h2>
+        <p>於 Utrecht（烏特勒支）市中心的品飲吧，從滑順到濃烈、從花果到可可，感受我們對咖啡的熱情。資深或入門都能在這裡找到你的杯中風景。</p>
+        <a class="btn" href="#">了解更多</a>
+      </div>
+      <div class="bar-visual">
+        <img src="assets/bags/bag-hero.svg" alt="吧台與咖啡意象" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#">品牌故事</a></li>
+          <li><a href="#">批發合作</a></li>
+          <li><a href="#">媒體與評論</a></li>
+          <li><a href="#">加入我們</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支援服務</h4>
+        <ul>
+          <li><a href="#">常見問題</a></li>
+          <li><a href="#">訂購與出貨</a></li>
+          <li><a href="#">保固與退換</a></li>
+          <li><a href="#">條款與隱私</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>分類導覽</h4>
+        <ul>
+          <li><a href="#">濾泡咖啡</a></li>
+          <li><a href="#">義式咖啡</a></li>
+          <li><a href="#">品飲組合</a></li>
+          <li><a href="#">訂閱方案</a></li>
+          <li><a href="#">工具與配件</a></li>
+        </ul>
+      </div>
+      <div class="footer-subscribe">
+        <h4>訂閱最新消息</h4>
+        <p>想要下次下單更划算？留下你的 Email 即可獲得優惠。</p>
+        <form action="#" method="post">
+          <input type="email" placeholder="Email" required />
+          <button class="btn small">訂閱</button>
+        </form>
+      </div>
+    </div>
+    <div class="container legal">
+      <p>© 2025 Keen-style 示例站｜僅供設計參考</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+/**
+ * 修正 assets/bags 圖片載入錯誤：
+ * - 嘗試標準小寫路徑
+ * - 若失敗，依序試其他大小寫組合
+ * - 全部失敗時，改用 inline SVG 佔位圖，避免版面空白
+ */
+(function(){
+  // 你的產品圖片期望檔名列表（可依實際調整/增減）
+  const expected = [
+    'bag-01.svg',
+    'bag-02.svg',
+    'bag-03.svg',
+    'bag-04.svg',
+    'bag-hero.svg'
+  ];
+
+  // 嘗試的大小寫候選（若你曾用過不同大小寫或路徑）
+  function candidates(file){
+    const base = 'assets/bags/';
+    const name = file.replace('.svg','');
+    return [
+      base + file,                // assets/bags/bag-01.svg
+      base + name + '.SVG',       // assets/bags/bag-01.SVG
+      base + name.toUpperCase() + '.svg',  // assets/bags/BAG-01.svg
+      base + name.toUpperCase() + '.SVG',  // assets/bags/BAG-01.SVG
+      base + name.charAt(0).toUpperCase() + name.slice(1) + '.svg', // assets/bags/Bag-01.svg
+    ];
+  }
+
+  // 生成一個簡單的佔位 SVG（維持卡片比例與視覺）
+  function placeholderSVG(label){
+    const svg = encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="320" height="200">
+        <rect x="0" y="0" width="100%" height="100%" fill="#16171a" stroke="#2a2b31"/>
+        <text x="50%" y="50%" fill="#cfd6e4" font-size="16" font-family="system-ui" text-anchor="middle" dominant-baseline="middle">
+          ${label || 'Image not found'}
+        </text>
+      </svg>
+    `);
+    return 'data:image/svg+xml;charset=utf-8,' + svg;
+  }
+
+  // 對頁面上的所有 <img> 進行檢查與修復
+  document.querySelectorAll('img').forEach(img => {
+    // 只處理 bags 目錄下的圖片
+    const src = img.getAttribute('src') || '';
+    if (!src.includes('assets/bags/')) return;
+
+    // 若圖片已載入成功則略過
+    const ok = () => img.complete && img.naturalWidth > 0;
+    if (ok()) return;
+
+    // 從 src 推斷目標檔名，若非預期清單則也嘗試修復
+    const fileMatch = src.split('/').pop();
+    const trials = candidates(fileMatch);
+
+    let fixed = false;
+    let attemptIndex = 0;
+
+    const tryNext = () => {
+      if (attemptIndex >= trials.length) {
+        // 全部失敗：套用佔位圖
+        img.setAttribute('src', placeholderSVG(fileMatch));
+        return;
+      }
+      const testSrc = trials[attemptIndex++];
+      const tester = new Image();
+      tester.onload = function(){
+        if (tester.naturalWidth > 0) {
+          img.setAttribute('src', testSrc);
+          fixed = true;
+        }
+      };
+      tester.onerror = function(){
+        tryNext();
+      };
+      tester.src = testSrc;
+    };
+
+    tryNext();
+  });
+})();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+

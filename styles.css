@@ -1,0 +1,167 @@
+:root{
+  --bg:#0f0f10;
+  --fg:#f5f7fa;
+  --muted:#cfd6e4;
+  --brand:#7ad1c7;
+  --accent:#ffb454;
+  --chip-fruit:#ff6b6b;
+  --chip-floral:#c084fc;
+  --chip-nutty:#d1a46b;
+  --chip-cocoa:#8b5e3c;
+  --chip-spice:#e07a5f;
+  --chip-citrus:#ffd166;
+  --card:#16171a;
+  --border:#2a2b31;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans TC,Arial}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.site-header{position:sticky;top:0;background:rgba(15,16,17,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:20}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700;letter-spacing:.4px}
+.menu a{margin:0 12px;color:var(--muted)}
+.menu a:hover{color:var(--fg)}
+.cta{padding:8px 12px;border:1px solid var(--border);border-radius:8px}
+.cta:hover{background:var(--card)}
+
+/* Hero */
+.hero{padding:72px 0;border-bottom:1px solid var(--border)}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero-copy h1{font-size:40px;margin:0 0 12px}
+.hero-copy p{color:var(--muted)}
+.hero-actions{display:flex;gap:12px;margin:20px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg)}
+.btn.primary{background:var(--brand);color:#0b1b18;border-color:transparent}
+.btn.ghost{background:transparent}
+.btn.small{padding:8px 12px;font-size:14px}
+.hero-ticker{display:flex;gap:16px;color:var(--muted);font-size:14px;margin-top:12px}
+.hero-visual{transform:translateY(0);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* Flavor */
+.flavor{padding:72px 0}
+.flavor h2{margin-bottom:8px}
+.flavor p{color:var(--muted)}
+.flavor-wheel-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.flavor-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;min-width:280px}
+.legend-item{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.chip{width:16px;height:16px;border-radius:50%}
+.chip-fruit{background:var(--chip-fruit)}
+.chip-floral{background:var(--chip-floral)}
+.chip-nutty{background:var(--chip-nutty)}
+.chip-cocoa{background:var(--chip-cocoa)}
+.chip-spice{background:var(--chip-spice)}
+.chip-citrus{background:var(--chip-citrus)}
+.flavor-result{margin-top:20px;border-top:1px solid var(--border);padding-top:16px}
+
+/* Products */
+.products{padding:72px 0;border-top:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card-body{padding:14px}
+.card-body h3{margin:0 0 8px}
+.card-body p{color:var(--muted);margin:0 0 8px}
+.price{font-weight:600;margin-bottom:8px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tags span{font-size:12px;color:#0b1b18;background:var(--brand);padding:4px 8px;border-radius:999px}
+.actions{display:flex;gap:8px}
+
+/* Subscription */
+.subscription{padding:72px 0;background:linear-gradient(180deg,#101114,#0b0c0f);border-top:1px solid var(--border)}
+.sub-inner{display:grid;gap:14px}
+.sub-form{display:flex;gap:12px;flex-wrap:wrap}
+.sub-form input{flex:1;min-width:240px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#121317;color:var(--fg)}
+.sub-highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;color:var(--muted);margin-top:8px}
+
+/* Bar */
+.bar{padding:72px 0;border-top:1px solid var(--border)}
+.bar-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.bar-copy p{color:var(--muted)}
+
+/* Footer */
+.site-footer{padding:48px 0;border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.footer-grid h4{margin:0 0 8px}
+.footer-grid p{color:var(--muted)}
+.footer-grid ul{list-style:none;padding:0;margin:0}
+.footer-grid li{margin:6px 0}
+.footer-subscribe form{display:flex;gap:8px;margin-top:8px}
+.footer-subscribe input{flex:1;min-width:200px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:#121317;color:var(--fg)}
+.legal{margin-top:24px;color:var(--muted);text-align:center}
+
+/* Responsive */
+@media (max-width:1024px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr}
+  .bar-inner{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+
+#flavorWheel {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+.chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.chip-fruit { background: #ff6b6b; }
+.chip-floral { background: #c084fc; }
+.chip-citrus { background: #ffd166; }
+.chip-nutty  { background: #d1a46b; }
+.chip-cocoa  { background: #8b5e3c; }
+.chip-spice  { background: #e07a5f; }
+
+}
+
+/* 風味輪 Canvas 必要樣式 */
+#flavorWheel {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 圖例 chip 必要樣式 */
+.chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.chip-fruit  { background: #ff6b6b; }
+.chip-floral { background: #c084fc; }
+.chip-citrus { background: #ffd166; }
+.chip-nutty  { background: #d1a46b; }
+.chip-cocoa  { background: #8b5e3c; }
+.chip-spice  { background: #e07a5f; }
+
+/* 圖例區塊排版（若未定義） */
+.flavor-legend {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
