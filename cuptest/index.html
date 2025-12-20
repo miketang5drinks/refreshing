@@ -132,3 +132,89 @@
     <button onclick="showPage('back')">顯示背面（香氣）</button>
     <button onclick="window.print()">列印 A6（雙面）</button>
   </div>
+<!-- ========================= -->
+<!-- A6 正面：風味／口感 -->
+<!-- ========================= -->
+
+<div class="a6-page active" id="page-front">
+
+  <div class="page-header">
+    <div>
+      <strong>coffee<br>consulate</strong>
+    </div>
+    <div style="text-align:right; font-size:12px;">
+      風味杯測紀錄表（正面）
+    </div>
+  </div>
+
+  <div class="title-main">咖啡風味輪廓</div>
+
+  <!-- 基本資料 -->
+  <table class="thin-border">
+    <tr>
+      <td style="width:20%;">日期</td>
+      <td colspan="3"><input type="date" name="date" /></td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        杯測人：
+        <input type="text" name="taster" style="border:none;border-bottom:1px solid #000;width:70%;" />
+      </td>
+    </tr>
+    <tr>
+      <td>烘焙度</td>
+      <td>咖啡：<input type="text" name="roast_coffee" style="border:none;border-bottom:1px solid #000;width:70%;" /></td>
+      <td>意式濃縮：<input type="text" name="roast_espresso" style="border:none;border-bottom:1px solid #000;width:70%;" /></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <!-- 生豆資訊 -->
+  <div class="section-title">生豆資訊</div>
+
+  <table class="thin-border">
+    <tr>
+      <td style="width:20%;">莊園</td>
+      <td><input type="text" name="farm" /></td>
+    </tr>
+    <tr>
+      <td>樹種</td>
+      <td><input type="text" name="variety" /></td>
+    </tr>
+    <tr>
+      <td>處理法</td>
+      <td><input type="text" name="process" /></td>
+    </tr>
+    <tr>
+      <td>海拔</td>
+      <td><input type="text" name="altitude" /></td>
+    </tr>
+  </table>
+
+  <div class="row" style="margin-top:4px;">
+    <div class="col-1">
+      烘焙日期：<input type="text" name="roast_date" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">T1（入豆溫度）：<input type="text" name="temp_in" /></div>
+    <div class="col-1">T3（最高溫度）：<input type="text" name="temp_max" /></div>
+  </div>
+
+  <!-- 風味與口感 -->
+  <div class="section-title">風味與口感（0–4）</div>
+
+  <div style="font-size:11px;font-weight:600;margin-bottom:4px;">風味</div>
+
+  <!-- 酸 -->
+  <div class="scale-row">
+    <div class="scale-label-sub">酸</div>
+    <div class="scale-track">
+      <span>非常強</span>
+      <div class="scale-dots">
+        <label><input type="radio" name="acid" value="4"><span></span></label>
+        <label><input type="radio" name="acid" value="3"><span></span></label>
+        <label><input type="radio" name="acid" value="2"><span></span></label>
+        <label><input type="radio" name="acid" value="1"><span></span></label>
+        <label>
