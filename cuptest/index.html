@@ -2,70 +2,25 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>CC－咖啡風味輪廓 A6（雙面）</title>
+  <title>風味杯測紀錄表｜Refreshing Coffee</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 套用 refreshing 網站的主 CSS -->
+  <link rel="stylesheet" href="../styles.css" />
+
   <style>
-    :root {
-      --border-color: #000;
-      --font-size-base: 11px;
-      --accent-flavour: #c56b47;
-      --accent-mouthfeel: #4f8c9d;
-      --accent-aroma-fruit: #f8b500;
-      --accent-aroma-floral: #ff6fb5;
-      --accent-aroma-herbal: #6fba82;
-      --accent-aroma-vegetal: #8fd3ff;
-      --accent-aroma-spice: #f59e0b;
-      --accent-aroma-woody: #a16207;
-      --accent-aroma-nutty: #c08457;
-      --accent-aroma-roasted: #92400e;
-      --accent-aroma-mineral: #6b7280;
-      --accent-aroma-chemical: #f97373;
-      --accent-aroma-micro: #8b5cf6;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
-        "Microsoft JhengHei", system-ui, sans-serif;
-      font-size: var(--font-size-base);
-      background: #f4f4f4;
-    }
-
-    .app {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 8px;
-    }
-
-    .view-switch {
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .view-switch button {
-      padding: 4px 10px;
-      margin: 0 4px;
-      font-size: 11px;
-      cursor: pointer;
-    }
-
+    /* A6 版面設定 */
     .a6-page {
       background: #fff;
-      width: 420px;   /* 約等於 105mm */
-      height: 595px;  /* 約等於 148mm */
-      border: 1px solid var(--border-color);
-      margin: 0 auto 8px;
-      padding: 8px;
+      width: 420px;   /* 約 105mm */
+      height: 595px;  /* 約 148mm */
+      border: 1px solid #000;
+      margin: 0 auto 20px;
+      padding: 10px;
       display: none;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
-
     .a6-page.active {
       display: flex;
     }
@@ -74,1073 +29,106 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 2px;
-      margin-bottom: 2px;
-    }
-
-    .logo-block {
-      font-size: 9px;
-      line-height: 1.2;
-    }
-
-    .page-header-title {
-      font-size: 9px;
-      text-align: right;
+      border-bottom: 1px solid #000;
+      padding-bottom: 4px;
+      margin-bottom: 4px;
     }
 
     .title-main {
       text-align: center;
       font-weight: 700;
-      font-size: 12px;
-      margin-bottom: 2px;
+      font-size: 16px;
+      margin-bottom: 4px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 9px;
+      font-size: 11px;
     }
-
-    th,
-    td {
-      border: 1px solid var(--border-color);
-      padding: 1px 2px;
-      vertical-align: middle;
+    th, td {
+      border: 1px solid #000;
+      padding: 2px 4px;
     }
-
-    .thin-border th,
-    .thin-border td {
+    .thin-border th, .thin-border td {
       border-width: 0.5px;
     }
 
     input[type="text"],
     input[type="date"],
-    input[type="number"],
-    textarea {
-      font-size: 9px;
-      padding: 1px 2px;
-      border: 1px solid #ccc;
+    input[type="number"] {
       width: 100%;
-    }
-
-    textarea {
-      resize: none;
-    }
-
-    .label-inline {
-      display: inline-flex;
-      align-items: center;
-      gap: 2px;
-      font-size: 9px;
-    }
-
-    .label-inline span {
-      white-space: nowrap;
+      font-size: 11px;
+      padding: 2px;
+      border: 1px solid #ccc;
     }
 
     .section-title {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 600;
-      margin-top: 2px;
-      margin-bottom: 2px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 2px;
+      margin-top: 6px;
+      border-top: 1px solid #000;
+      padding-top: 4px;
     }
 
-    .row {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 2px;
+    /* 切換按鈕 */
+    .view-switch {
+      text-align: center;
+      margin: 20px 0;
     }
-
-    .col-1 {
-      flex: 1;
-    }
-
-    .col-2 {
-      flex: 2;
-    }
-
-    .col-3 {
-      flex: 3;
-    }
-
-    /* 風味尺度線 */
-    .scale-row {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      margin: 1px 0;
-    }
-
-    .scale-label-main {
-      width: 3em;
-      font-size: 9px;
-      font-weight: 600;
-    }
-
-    .scale-label-sub {
-      width: 3em;
-      font-size: 9px;
-    }
-
-    .scale-track {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      font-size: 8px;
-    }
-
-    .scale-dots {
-      display: flex;
-      flex: 1;
-      gap: 1px;
-      justify-content: space-between;
-    }
-
-    .scale-dots label {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: 0.5px solid #666;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .scale-dots input {
-      display: none;
-    }
-
-    .scale-dots input:checked + span {
-      background: #000;
-      border-color: #000;
-    }
-
-    /* 圓輪示意圖 */
-    .wheels-row {
-      display: flex;
-      gap: 4px;
-      margin-top: 2px;
-      font-size: 8px;
-    }
-
-    .wheel-figure {
-      flex: 1;
-      border: 1px solid var(--border-color);
+    .view-switch button {
+      padding: 6px 12px;
+      margin: 0 6px;
+      background: #6b4f3f;
+      color: #fff;
       border-radius: 4px;
-      padding: 2px;
-      text-align: center;
-    }
-
-    .wheel-title {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .wheel-circle {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      border: 1px solid #999;
-      position: relative;
-      margin: 0 auto 2px;
-      font-size: 7px;
-    }
-
-    .wheel-item {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-    }
-
-    /* 口感／風味輪佈局 */
-    .wheel-item.center {
-      left: 50%;
-      top: 50%;
-      font-weight: 600;
-    }
-
-    .wheel-item.top {
-      left: 50%;
-      top: 10%;
-    }
-
-    .wheel-item.bottom {
-      left: 50%;
-      top: 90%;
-    }
-
-    .wheel-item.left {
-      left: 10%;
-      top: 50%;
-    }
-
-    .wheel-item.right {
-      left: 90%;
-      top: 50%;
-    }
-
-    .wheel-item.tl {
-      left: 22%;
-      top: 22%;
-    }
-
-    .wheel-item.tr {
-      left: 78%;
-      top: 22%;
-    }
-
-    .wheel-item.bl {
-      left: 22%;
-      top: 78%;
-    }
-
-    .wheel-item.br {
-      left: 78%;
-      top: 78%;
-    }
-
-    /* 香氣輪佈局 */
-    .wheel-circle.aroma {
-      font-size: 7px;
-    }
-
-    .wheel-item.aroma-main {
-      font-weight: 600;
-    }
-
-    /* 香氣選擇方格 */
-    .aroma-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-      margin-bottom: 3px;
-      font-size: 8px;
-    }
-
-    .aroma-cell {
-      border-radius: 3px;
-      padding: 3px;
-      border: 1px solid #999;
-      cursor: pointer;
-      text-align: center;
-      line-height: 1.2;
-      user-select: none;
-      color: #111;
-    }
-
-    .aroma-cell small {
-      display: block;
-      font-size: 7px;
-      opacity: 0.9;
-    }
-
-    .aroma-cell.selected {
-      outline: 2px solid #000;
-      outline-offset: 1px;
-    }
-
-    .aroma-fruit {
-      background: #fff7cc;
-      border-color: var(--accent-aroma-fruit);
-    }
-
-    .aroma-floral {
-      background: #ffe1f1;
-      border-color: var(--accent-aroma-floral);
-    }
-
-    .aroma-herbal {
-      background: #e0f7e8;
-      border-color: var(--accent-aroma-herbal);
-    }
-
-    .aroma-vegetal {
-      background: #e0f3ff;
-      border-color: var(--accent-aroma-vegetal);
-    }
-
-    .aroma-spice {
-      background: #fff3cd;
-      border-color: var(--accent-aroma-spice);
-    }
-
-    .aroma-woody {
-      background: #f3e5d7;
-      border-color: var(--accent-aroma-woody);
-    }
-
-    .aroma-nutty {
-      background: #f6e4d5;
-      border-color: var(--accent-aroma-nutty);
-    }
-
-    .aroma-roasted {
-      background: #f5e1d2;
-      border-color: var(--accent-aroma-roasted);
-    }
-
-    .aroma-mineral {
-      background: #e5e7eb;
-      border-color: var(--accent-aroma-mineral);
-    }
-
-    .aroma-chemical {
-      background: #fee2e2;
-      border-color: var(--accent-aroma-chemical);
-    }
-
-    .aroma-micro {
-      background: #ede9fe;
-      border-color: var(--accent-aroma-micro);
-    }
-
-    .aroma-selected-table th,
-    .aroma-selected-table td {
-      padding: 1px 2px;
-    }
-
-    .aroma-selected-table input[type="number"] {
-      width: 28px;
-      text-align: center;
-      font-size: 8px;
-    }
-
-    .footer-note {
-      margin-top: auto;
-      font-size: 7px;
-      text-align: right;
-    }
-
-    .controls {
-      text-align: center;
-      margin-top: 4px;
-      font-size: 11px;
-    }
-
-    .controls button {
-      padding: 4px 10px;
-      margin: 0 4px;
-      font-size: 11px;
+      border: none;
       cursor: pointer;
     }
+    .view-switch button:hover {
+      background: #8b6a58;
+    }
 
+    /* 列印設定 */
     @media print {
-      body {
-        background: #fff;
+      .view-switch,
+      nav,
+      footer {
+        display: none !important;
       }
-
-      .app {
-        padding: 0;
-        max-width: none;
-      }
-
       @page {
         size: A6;
         margin: 4mm;
       }
-
-      .view-switch,
-      .controls {
-        display: none !important;
-      }
-
       .a6-page {
         display: block;
         page-break-after: always;
+        border: none;
         width: auto;
         height: auto;
-        border: none;
-        margin: 0;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .a6-page {
-        transform: scale(0.9);
-        transform-origin: top center;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="app">
-    <!-- 螢幕切換：正面／背面 -->
-    <div class="view-switch">
-      <button type="button" onclick="showPage('front')">顯示正面（風味／口感）</button>
-      <button type="button" onclick="showPage('back')">顯示背面（香氣）</button>
-    </div>
 
-    <!-- 正面：風味與口感 -->
-    <div class="a6-page active" id="page-front">
-      <div class="page-header">
-        <div class="logo-block">
-          <div>coffee</div>
-          <div>consulate</div>
-        </div>
-        <div class="page-header-title">
-          CC－咖啡風味輪廓（A6 正面）
-        </div>
-      </div>
+<!-- 套用 refreshing 網站的 header / nav -->
+<header>
+  <h1>Refreshing Coffee</h1>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../beans.html">Beans</a>
+    <a href="../brewing.html">Brewing</a>
+    <a href="../cuptest/index.html" class="active">風味紀錄表</a>
+  </nav>
+</header>
 
-      <div class="title-main">CC－咖啡風味輪廓</div>
+<main>
+  <h2 style="text-align:center; margin-top:20px;">風味杯測紀錄表（A6 雙面）</h2>
 
-      <!-- 基本資料 -->
-      <table class="thin-border" style="margin-bottom:2px;">
-        <tr>
-          <td style="width:20%;">日期</td>
-          <td colspan="3">
-            <input type="date" name="date" />
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4">
-            杯測人：
-            <input
-              type="text"
-              name="taster"
-              style="border:none;border-bottom:1px solid #000;width:70%;"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td style="width:20%;">烘焙度</td>
-          <td style="width:30%;">
-            咖啡：
-            <input
-              type="text"
-              name="roast_coffee"
-              style="border:none;border-bottom:1px solid #000;width:70%;"
-            />
-          </td>
-          <td style="width:30%;">
-            意式濃縮：
-            <input
-              type="text"
-              name="roast_espresso"
-              style="border:none;border-bottom:1px solid #000;width:70%;"
-            />
-          </td>
-          <td></td>
-        </tr>
-      </table>
-
-      <!-- 生豆資訊（刪除指定欄位後） -->
-      <div class="section-title">生豆資訊</div>
-      <table class="thin-border">
-        <tr>
-          <td style="width:20%;">莊園</td>
-          <td>
-            <input type="text" name="farm" />
-          </td>
-        </tr>
-        <tr>
-          <td>樹種</td>
-          <td>
-            <input type="text" name="variety" />
-          </td>
-        </tr>
-        <tr>
-          <td>處理法</td>
-          <td>
-            <input type="text" name="process" />
-          </td>
-        </tr>
-        <tr>
-          <td>海拔</td>
-          <td>
-            <input type="text" name="altitude" />
-          </td>
-        </tr>
-      </table>
-
-      <div class="row" style="margin-top:2px;">
-        <div class="col-1">
-          <label class="label-inline">
-            <span>烘焙日期：</span>
-            <input type="text" name="roast_date" />
-          </label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-1">
-          <label class="label-inline">
-            <span>T1（入豆溫度）：</span>
-            <input type="text" name="temp_in" />
-          </label>
-        </div>
-        <div class="col-1">
-          <label class="label-inline">
-            <span>T3（最高溫度）：</span>
-            <input type="text" name="temp_max" />
-          </label>
-        </div>
-      </div>
-
-      <!-- 風味與口感尺度 -->
-      <div class="section-title">風味與口感（0–4）</div>
-
-      <!-- 風味：酸 / 苦 / 鹹感 / 甜感 -->
-      <div style="font-size:9px;font-weight:600;margin-bottom:1px;">風味</div>
-
-      <div class="scale-row">
-        <div class="scale-label-sub">酸</div>
-        <div class="scale-track">
-          <span>非常強</span>
-          <div class="scale-dots">
-            <label><input type="radio" name="acid" value="4" /><span></span></label>
-            <label><input type="radio" name="acid" value="3" /><span></span></label>
-            <label><input type="radio" name="acid" value="2" /><span></span></label>
-            <label><input type="radio" name="acid" value="1" /><span></span></label>
-            <label><input type="radio" name="acid" value="0" /><span></span></label>
-          </div>
-          <span>弱／無</span>
-        </div>
-      </div>
-
-      <div class="scale-row">
-        <div class="scale-label-sub">苦</div>
-        <div class="scale-track">
-          <span>非常強</span>
-          <div class="scale-dots">
-            <label><input type="radio" name="bitter" value="4" /><span></span></label>
-            <label><input type="radio" name="bitter" value="3" /><span></span></label>
-            <label><input type="radio" name="bitter" value="2" /><span></span></label>
-            <label><input type="radio" name="bitter" value="1" /><span></span></label>
-            <label><input type="radio" name="bitter" value="0" /><span></span></label>
-          </div>
-          <span>弱／無</span>
-        </div>
-      </div>
-
-      <div class="scale-row">
-        <div class="scale-label-sub">鹹感</div>
-        <div class="scale-track">
-          <span>非常強</span>
-          <div class="scale-dots">
-            <label><input type="radio" name="salty" value="4" /><span></span></label>
-            <label><input type="radio" name="salty" value="3" /><span></span></label>
-            <label><input type="radio" name="salty" value="2" /><span></span></label>
-            <label><input type="radio" name="salty" value="1" /><span></span></label>
-            <label><input type="radio" name="salty" value="0" /><span></span></label>
-          </div>
-          <span>弱／無</span>
-        </div>
-      </div>
-
-      <div class="scale-row">
-        <div class="scale-label-sub">甜感</div>
-        <div class="scale-track">
-          <span>非常強</span>
-          <div class="scale-dots">
-            <label><input type="radio" name="sweet" value="4" /><span></span></label>
-            <label><input type="radio" name="sweet" value="3" /><span></span></label>
-            <label><input type="radio" name="sweet" value="2" /><span></span></label>
-            <label><input type="radio" name="sweet" value="1" /><span></span></label>
-            <label><input type="radio" name="sweet" value="0" /><span></span></label>
-          </div>
-          <span>弱／無</span>
-        </div>
-      </div>
-
-      <!-- 口感：醇厚度 / 餘韻 -->
-      <div style="font-size:9px;font-weight:600;margin-top:2px;margin-bottom:1px;">口感</div>
-
-      <div class="scale-row">
-        <div class="scale-label-sub">醇厚度</div>
-        <div class="scale-track">
-          <span>非常飽滿</span>
-          <div class="scale-dots">
-            <label><input type="radio" name="body" value="4" /><span></span></label>
-            <label><input type="radio" name="body" value="3" /><span></span></label>
-            <label><input type="radio" name="body" value="2" /><span></span></label>
-            <label><input type="radio" name="body" value="1" /><span></span></label>
-            <label><input type="radio" name="body" value="0" /><span></span></label>
-          </div>
-          <span>輕微／水感</span>
-        </div>
-      </div>
-
-      <div class="scale-row">
-        <div class="scale-label-sub">餘韻</div>
-        <div class="scale-track">
-          <span>非常長</span>
-          <div class="scale-dots">
-            <label><input type="radio" name="aftertaste" value="4" /><span></span></label>
-            <label><input type="radio" name="aftertaste" value="3" /><span></span></label>
-            <label><input type="radio" name="aftertaste" value="2" /><span></span></label>
-            <label><input type="radio" name="aftertaste" value="1" /><span></span></label>
-            <label><input type="radio" name="aftertaste" value="0" /><span></span></label>
-          </div>
-          <span>非常短</span>
-        </div>
-      </div>
-
-      <!-- 圓輪示意圖 -->
-      <div class="wheels-row">
-        <!-- 風味／口感輪 -->
-        <div class="wheel-figure">
-          <div class="wheel-title">口感／風味圓輪示意</div>
-          <div class="wheel-circle">
-            <div class="wheel-item center">咖啡</div>
-            <div class="wheel-item top">酸</div>
-            <div class="wheel-item right">苦</div>
-            <div class="wheel-item bottom">鹹感</div>
-            <div class="wheel-item left">甜感</div>
-            <div class="wheel-item tl">口感</div>
-            <div class="wheel-item br">醇厚度／餘韻</div>
-          </div>
-        </div>
-
-        <!-- 香氣輪 -->
-        <div class="wheel-figure">
-          <div class="wheel-title">香氣圓輪示意</div>
-          <div class="wheel-circle aroma">
-            <div class="wheel-item center aroma-main">香氣</div>
-            <div class="wheel-item top aroma-main">水果</div>
-            <div class="wheel-item tr">花</div>
-            <div class="wheel-item right">烘焙</div>
-            <div class="wheel-item br">堅果</div>
-            <div class="wheel-item bottom">木質／香料</div>
-            <div class="wheel-item bl">草本／蔬菜</div>
-            <div class="wheel-item left">礦物／無機</div>
-            <div class="wheel-item tl">化學／微生物</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-note">
-        @ 2018 Coffee Consulate, Mannheim<br />
-        僅可於取得 Coffee Consulate 書面同意後，全部或部分列印或複製。
-      </div>
-    </div>
-
-    <!-- 背面：香氣選擇與格式 -->
-    <div class="a6-page" id="page-back">
-      <div class="page-header">
-        <div class="logo-block">
-          <div>coffee</div>
-          <div>consulate</div>
-        </div>
-        <div class="page-header-title">
-          CC－咖啡風味輪廓（A6 背面）
-        </div>
-      </div>
-
-      <div class="title-main">香氣（初步感官）</div>
-
-      <!-- 香氣圓輪示意圖 -->
-      <div class="wheels-row">
-        <div class="wheel-figure">
-          <div class="wheel-title">香氣圓輪示意</div>
-          <div class="wheel-circle aroma">
-            <div class="wheel-item center aroma-main">香氣</div>
-            <div class="wheel-item top aroma-main">水果</div>
-            <div class="wheel-item tr">花</div>
-            <div class="wheel-item right">烘焙</div>
-            <div class="wheel-item br">堅果</div>
-            <div class="wheel-item bottom">木質／香料</div>
-            <div class="wheel-item bl">草本／蔬菜</div>
-            <div class="wheel-item left">礦物／無機</div>
-            <div class="wheel-item tl">化學／微生物</div>
-          </div>
-        </div>
-
-        <div class="wheel-figure">
-          <div class="wheel-title">強度說明</div>
-          <div style="font-size:8px;text-align:left;">
-            4：非常強<br />
-            3：強<br />
-            2：中等<br />
-            1：弱<br />
-            0：無
-          </div>
-        </div>
-      </div>
-
-      <!-- 香氣選擇方格 -->
-      <div class="section-title">香氣選擇（點選方格以加入／移除）</div>
-      <div class="aroma-grid" id="aroma-grid">
-        <!-- 以 JS 填入香氣方格 -->
-      </div>
-
-      <!-- 已選香氣格式表 -->
-      <div style="font-size:8px;margin-bottom:2px;">
-        已選香氣（父類／子類／示例／強度 0–4）：
-      </div>
-      <table class="thin-border aroma-selected-table">
-        <thead>
-          <tr>
-            <th style="width:18%;">父類</th>
-            <th style="width:20%;">子類</th>
-            <th>香氣示例</th>
-            <th style="width:12%;">強度</th>
-          </tr>
-        </thead>
-        <tbody id="aroma-selected-body">
-          <!-- JS 動態填入 -->
-        </tbody>
-      </table>
-
-      <div class="footer-note">
-        @ 2018 Coffee Consulate, Mannheim<br />
-        僅可於取得 Coffee Consulate 書面同意後，全部或部分列印或複製。
-      </div>
-    </div>
-
-    <!-- 全頁控制 -->
-    <div class="controls">
-      <button type="button" onclick="window.print()">列印 A6（雙面）</button>
-      <button type="button" onclick="resetForm()">清除內容</button>
-    </div>
+  <div class="view-switch">
+    <button onclick="showPage('front')">顯示正面（風味／口感）</button>
+    <button onclick="showPage('back')">顯示背面（香氣）</button>
+    <button onclick="window.print()">列印 A6（雙面）</button>
   </div>
-
-  <script>
-    // 切換正面／背面
-    function showPage(which) {
-      document.getElementById('page-front').classList.toggle(
-        'active',
-        which === 'front'
-      );
-      document.getElementById('page-back').classList.toggle(
-        'active',
-        which === 'back'
-      );
-    }
-
-    // 香氣項目資料（依照簡體 PDF 內容整理）
-    const aromaItems = [
-      // 水果
-      {
-        id: 'fruit-citrus',
-        group: '水果',
-        subgroup: '柑橘',
-        examples: '佛手柑、葡萄柚、金橘、檸檬、萊姆、砂糖橘／橘子、橙子',
-        type: 'fruit',
-      },
-      {
-        id: 'fruit-berry',
-        group: '水果',
-        subgroup: '漿果',
-        examples:
-          '黑莓、黑醋栗、藍莓、蔓越莓、接骨木、醋栗、紅醋栗、覆盆子、草莓',
-        type: 'fruit',
-      },
-      {
-        id: 'fruit-pome',
-        group: '水果',
-        subgroup: '核果',
-        examples: '蘋果、杏、櫻桃、無花果、桃、梨、李子、榅桲',
-        type: 'fruit',
-      },
-      {
-        id: 'fruit-tropical',
-        group: '水果',
-        subgroup: '熱帶水果',
-        examples: '香蕉、芒果、甜瓜、木瓜、百香果、石榴、大黃',
-        type: 'fruit',
-      },
-      {
-        id: 'fruit-dried',
-        group: '水果',
-        subgroup: '果乾',
-        examples: '（果乾類風味）',
-        type: 'fruit',
-      },
-
-      // 花
-      {
-        id: 'floral-flowers',
-        group: '花',
-        subgroup: '花朵',
-        examples: '天竺葵、薰衣草、玫瑰、紫羅蘭',
-        type: 'floral',
-      },
-      {
-        id: 'floral-tree',
-        group: '花',
-        subgroup: '果樹花',
-        examples: '洋槐花、栗花、接骨木花、茉莉花、橙花',
-        type: 'floral',
-      },
-
-      // 草本
-      {
-        id: 'herbal',
-        group: '草本',
-        subgroup: '草本',
-        examples:
-          '羅勒、香菜、香蜂草、檸檬草、薄荷、迷迭香、鼠尾草、百里香',
-        type: 'herbal',
-      },
-
-      // 植物／蔬菜
-      {
-        id: 'veg-green',
-        group: '植物的',
-        subgroup: '綠色植物',
-        examples: '芹菜、黃瓜、茴香、青草、青蘋果、綠豆、綠橄欖、青豌豆',
-        type: 'vegetal',
-      },
-      {
-        id: 'veg-dry',
-        group: '植物的',
-        subgroup: '乾燥植物',
-        examples: '紅茶、麻類植物、乾草、啤酒花、稻草、煙草、香草',
-        type: 'vegetal',
-      },
-      {
-        id: 'veg-cereal',
-        group: '植物的',
-        subgroup: '穀類',
-        examples: '竹筍、印度香米、玉米、穀物',
-        type: 'vegetal',
-      },
-
-      // 香料
-      {
-        id: 'spice',
-        group: '香料',
-        subgroup: '香料',
-        examples:
-          '茴芹、香菜、肉桂、丁香、杜松子、薑、甘草根、肉豆蔻、胡椒',
-        type: 'spice',
-      },
-
-      // 木質
-      {
-        id: 'woody-conifer',
-        group: '木質的',
-        subgroup: '針葉木',
-        examples: '雪松、柏木、冷杉、松樹、樹脂、石松',
-        type: 'woody',
-      },
-      {
-        id: 'woody-broadleaf',
-        group: '木質的',
-        subgroup: '闊葉木',
-        examples: '金合歡、梣木、山毛櫸、櫻桃木、板栗木、橡木、桑木、刺槐',
-        type: 'woody',
-      },
-
-      // 堅果
-      {
-        id: 'nutty',
-        group: '堅果',
-        subgroup: '堅果',
-        examples:
-          '杏仁、榛子、牛軋糖、花生、松子、開心果、甜栗子、芝麻、核桃',
-        type: 'nutty',
-      },
-
-      // 烘焙風味
-      {
-        id: 'roast-light',
-        group: '烘焙風味',
-        subgroup: '淺烘',
-        examples: '龍舌蘭糖漿、麵包、蜂蜜、楓糖漿、爆米花、冰糖、吐司',
-        type: 'roasted',
-      },
-      {
-        id: 'roast-medium',
-        group: '烘焙風味',
-        subgroup: '中烘',
-        examples: '麵包皮、焦糖、可可、黑巧克力、麥芽',
-        type: 'roasted',
-      },
-      {
-        id: 'roast-dark',
-        group: '烘焙風味',
-        subgroup: '深烘',
-        examples: '灰燼、煤、甘草、糖蜜、煙、醬油',
-        type: 'roasted',
-      },
-
-      // 無機（礦物）
-      {
-        id: 'mineral-earth',
-        group: '無機的',
-        subgroup: '泥土',
-        examples: '胡蘿蔔、花卉土、馬鈴薯、根莖',
-        type: 'mineral',
-      },
-      {
-        id: 'mineral-moldy',
-        group: '無機的',
-        subgroup: '發霉',
-        examples: '藻類、樹皮覆蓋物、潮濕葉子、苔蘚、霉菌、蘑菇',
-        type: 'mineral',
-      },
-      {
-        id: 'mineral-stale',
-        group: '無機的',
-        subgroup: '陳舊',
-        examples: '紙板、軟木、泥炭',
-        type: 'mineral',
-      },
-
-      // 化學的
-      {
-        id: 'chemical-alcohol',
-        group: '化學的',
-        subgroup: '酒精',
-        examples: '白蘭地、杏仁酒、葡萄酒、雪莉酒、威士忌',
-        type: 'chemical',
-      },
-      {
-        id: 'chemical-medicinal',
-        group: '化學的',
-        subgroup: '醫藥味',
-        examples: '丙酮、消毒劑',
-        type: 'chemical',
-      },
-      {
-        id: 'chemical-sulfur',
-        group: '化學的',
-        subgroup: '硫磺',
-        examples: '高麗菜、橡膠、二氧化硫、焦油',
-        type: 'chemical',
-      },
-
-      // 微生物
-      {
-        id: 'micro-animal',
-        group: '微生物',
-        subgroup: '動物的',
-        examples: '貓尿、烤雞、馬汗、皮革、肉、潮濕毛髮',
-        type: 'micro',
-      },
-      {
-        id: 'micro-lactic',
-        group: '微生物',
-        subgroup: '乳酸',
-        examples:
-          '藍紋乳酪、奶油、切達起司、奶油、酸敗、優格',
-        type: 'micro',
-      },
-      {
-        id: 'micro-fermented',
-        group: '微生物',
-        subgroup: '發酵',
-        examples: '酸麵團、酵母',
-        type: 'micro',
-      },
-    ];
-
-    // 依 type 對應 CSS 類別
-    function aromaTypeClass(type) {
-      switch (type) {
-        case 'fruit':
-          return 'aroma-fruit';
-        case 'floral':
-          return 'aroma-floral';
-        case 'herbal':
-          return 'aroma-herbal';
-        case 'vegetal':
-          return 'aroma-vegetal';
-        case 'spice':
-          return 'aroma-spice';
-        case 'woody':
-          return 'aroma-woody';
-        case 'nutty':
-          return 'aroma-nutty';
-        case 'roasted':
-          return 'aroma-roasted';
-        case 'mineral':
-          return 'aroma-mineral';
-        case 'chemical':
-          return 'aroma-chemical';
-        case 'micro':
-          return 'aroma-micro';
-        default:
-          return '';
-      }
-    }
-
-    const selectedAromas = new Set();
-
-    function renderAromaGrid() {
-      const grid = document.getElementById('aroma-grid');
-      grid.innerHTML = '';
-      aromaItems.forEach((item) => {
-        const cell = document.createElement('div');
-        cell.className =
-          'aroma-cell ' + aromaTypeClass(item.type);
-        cell.dataset.id = item.id;
-        if (selectedAromas.has(item.id)) {
-          cell.classList.add('selected');
-        }
-        cell.innerHTML = `
-          <strong>${item.group}</strong><br/>
-          ${item.subgroup}
-          <small>${item.examples}</small>
-        `;
-        cell.addEventListener('click', () => {
-          if (selectedAromas.has(item.id)) {
-            selectedAromas.delete(item.id);
-          } else {
-            selectedAromas.add(item.id);
-          }
-          renderAromaGrid();
-          renderSelectedAromas();
-        });
-        grid.appendChild(cell);
-      });
-    }
-
-    function renderSelectedAromas() {
-      const tbody = document.getElementById('aroma-selected-body');
-      tbody.innerHTML = '';
-      aromaItems.forEach((item) => {
-        if (!selectedAromas.has(item.id)) return;
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${item.group}</td>
-          <td>${item.subgroup}</td>
-          <td>${item.examples}</td>
-          <td>
-            <input type="number" min="0" max="4" name="intensity_${item.id}" />
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-      if (tbody.children.length === 0) {
-        const tr = document.createElement('tr');
-        const td = document.createElement('td');
-        td.colSpan = 4;
-        td.style.textAlign = 'center';
-        td.textContent = '尚未選擇香氣，請點選上方方格。';
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-      }
-    }
-
-    function resetForm() {
-      // 重設輸入欄位與 radio
-      document
-        .querySelectorAll('input[type="text"],input[type="date"],input[type="number"]')
-        .forEach((el) => (el.value = ''));
-      document
-        .querySelectorAll('input[type="radio"]')
-        .forEach((el) => (el.checked = false));
-
-      // 重設香氣選擇
-      selectedAromas.clear();
-      renderAromaGrid();
-      renderSelectedAromas();
-
-      // 回到正面
-      showPage('front');
-    }
-
-    // 初始化
-    renderAromaGrid();
-    renderSelectedAromas();
-  </script>
-</body>
-</html>
